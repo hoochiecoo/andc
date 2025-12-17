@@ -1,0 +1,13 @@
+name: flutter_camera_opencv_ndk
+description: Minimal Flutter + NDK + OpenCV example
+publish_to: 'none'
+version: 0.0.1
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+    
