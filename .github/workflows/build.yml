@@ -16,14 +16,17 @@ jobs:
       ANDROID_HOME: ${{ runner.tool_cache }}/android-sdk
 
     steps:
+      # 1️⃣ Checkout code
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      # 2️⃣ Setup Flutter
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
           flutter-version: 'stable'
 
+      # 3️⃣ Install Android SDK & build tools
       - name: Setup Android SDK
         uses: android-actions/setup-android@v2
         with:
@@ -32,12 +35,14 @@ jobs:
           ndk: 25.2.9519653
           cmake: 3.22.1
 
+      # 4️⃣ Accept Android licenses
       - name: Accept Android licenses
         run: yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses
 
+      # 5️⃣ Get Flutter dependencies
       - name: Flutter pub get
         run: flutter pub get
 
+      # 6️⃣ Build Android APK
       - name: Build APK
         run: flutter build apk --debug
-    
